@@ -1,0 +1,12 @@
+Package: cinterpolate
+Title: Interoplation From C
+Version: 0.0.1
+Description: Simple interpolation methods designed to be used from C code.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Author: Rich FitzJohn
+Maintainer: Rich FitzJohn <rich.fitzjohn@gmail.com>
+URL: https://github.com/mrc-ide/cinterpolate
+BugReports: https://github.com/mrc-ide/cinterpolate/issues
+RoxygenNote: 6.0.1
+Suggests: testthat
