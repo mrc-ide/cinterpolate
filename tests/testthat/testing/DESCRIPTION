@@ -1,0 +1,10 @@
+Package: testing
+Title: Testing 'cinterpolate' Extensions
+Version: 0.0.1
+Description: Testing cinterpolate extensions work.
+License: CC0
+Author: Rich FitzJohn
+Maintainer: Rich FitzJohn <rich.fitzjohn@gmail.com>
+LinkingTo: cinterpolate
+Imports: cinterpolate
+Suggests: testthat
