@@ -115,6 +115,12 @@ static const R_CallMethodDef call_methods[] = {
 // Package initialisation, required for the registration
 void R_init_cinterpolate(DllInfo *dll) {
   R_registerRoutines(dll, NULL, call_methods, NULL, NULL);
+
+  R_RegisterCCallable("cinterpolate", "interpolate_alloc",
+                      (DL_FUNC) &interpolate_alloc);
+  R_RegisterCCallable("cinterpolate", "interpolate_eval",
+                      (DL_FUNC) &interpolate_eval);
+
 #if defined(R_VERSION) && R_VERSION >= R_Version(3, 3, 0)
   R_useDynamicSymbols(dll, FALSE);
   R_forceSymbols(dll, TRUE);
