@@ -32,6 +32,7 @@ check_all:
 clean:
 	rm -f src/*.o src/*.so src/*.dll
 	rm -rf src/cinterpolate.so.dSYM
+	rm -f tests/testthat/testing/*.o tests/testthat/testing/*.so tests/testthat/testing/*.dll
 
 autodoc:
 	${RSCRIPT} autodoc.R process
