@@ -8,6 +8,7 @@
 typedef void* interpolate_alloc_t(const char *, size_t, size_t,
                                    double*, double*);
 typedef int interpolate_eval_t(double, void*, double*);
+typedef int interpolate_free_t(void*);
 
 void * cinterpolate_alloc(const char *type, size_t n, size_t ny,
                           double *x, double *y) {
@@ -26,4 +27,13 @@ int cinterpolate_eval(double x, void *obj, double *y) {
       R_GetCCallable("cinterpolate", "interpolate_eval");
   }
   return fun(x, obj, y);
+}
+
+void cinterpolate_free(void *obj) {
+  static interpolate_free_t *fun;
+  if (fun == NULL) {
+    fun = (interpolate_free_t*)
+      R_GetCCallable("cinterpolate", "interpolate_free");
+  }
+  return fun(obj);
 }

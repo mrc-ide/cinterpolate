@@ -120,6 +120,8 @@ void R_init_cinterpolate(DllInfo *dll) {
                       (DL_FUNC) &interpolate_alloc);
   R_RegisterCCallable("cinterpolate", "interpolate_eval",
                       (DL_FUNC) &interpolate_eval);
+  R_RegisterCCallable("cinterpolate", "interpolate_free",
+                      (DL_FUNC) &interpolate_free);
 
 #if defined(R_VERSION) && R_VERSION >= R_Version(3, 3, 0)
   R_useDynamicSymbols(dll, FALSE);

@@ -23,6 +23,8 @@ SEXP test(SEXP r_x, SEXP r_y, SEXP r_xout, SEXP r_type) {
     yout += ny;
   }
 
+  cinterpolate_free(obj);
+
   UNPROTECT(1);
   return r_yout;
 }
