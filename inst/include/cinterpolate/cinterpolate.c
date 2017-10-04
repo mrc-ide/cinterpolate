@@ -34,5 +34,5 @@ void cinterpolate_free(void *obj) {
     fun = (interpolate_free_t*)
       R_GetCCallable("cinterpolate", "interpolate_free");
   }
-  return fun(obj);
+  fun(obj);
 }
