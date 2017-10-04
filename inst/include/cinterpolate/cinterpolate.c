@@ -5,13 +5,10 @@
 
 #include <R_ext/Rdynload.h>
 
-typedef void* interpolate_alloc_t(const char *, size_t, size_t,
-                                   double*, double*);
-typedef int interpolate_eval_t(double, void*, double*);
-typedef int interpolate_free_t(void*);
-
 void * cinterpolate_alloc(const char *type, size_t n, size_t ny,
                           double *x, double *y) {
+  typedef void* interpolate_alloc_t(const char *, size_t, size_t,
+                                    double*, double*);
   static interpolate_alloc_t *fun;
   if (fun == NULL) {
     fun = (interpolate_alloc_t*)
@@ -21,6 +18,7 @@ void * cinterpolate_alloc(const char *type, size_t n, size_t ny,
 }
 
 int cinterpolate_eval(double x, void *obj, double *y) {
+  typedef int interpolate_eval_t(double, void*, double*);
   static interpolate_eval_t *fun;
   if (fun == NULL) {
     fun = (interpolate_eval_t*)
@@ -30,6 +28,7 @@ int cinterpolate_eval(double x, void *obj, double *y) {
 }
 
 void cinterpolate_free(void *obj) {
+  typedef int interpolate_free_t(void*);
   static interpolate_free_t *fun;
   if (fun == NULL) {
     fun = (interpolate_free_t*)
