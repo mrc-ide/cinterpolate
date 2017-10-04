@@ -10,13 +10,13 @@ SEXP r_interpolate_prepare(SEXP r_x, SEXP r_y, SEXP r_type) {
   size_t n = (size_t)length(r_x), ny;
   double *x = REAL(r_x), *y = REAL(r_y);
   if (isMatrix(r_y)) {
-    ny = INTEGER(getAttrib(r_y, R_DimSymbol))[1];
+    ny = ncols(r_y);
   } else {
     ny = 1;
   }
   if ((size_t)length(r_y) != ny * n) {
     Rf_error("Expected 'y' to have total length of %d (%d x %d)",
-             ny * n, ny, n);
+             ny * n, n, ny);
   }
   interpolate_data * data = interpolate_alloc(type_name, n, ny, x, y);
 

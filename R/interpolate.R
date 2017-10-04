@@ -19,13 +19,10 @@ interpolation_function <- function(x, y, type) {
   }
 
   is_matrix <- is.matrix(y)
-  if (is_matrix) {
-    ny <- ncol(y)
-  } else {
-    y <- matrix(y, ncol = 1)
-    ny <- 1L
+  ny <- if (is_matrix) ncol(y) else 1L
+  if (!is.character(type) || length(type) != 1L || is.na(type)) {
+    stop("Expected 'type' to be a scalar character")
   }
-  stopifnot(is.character(type), length(type) == 1L)
   ptr <- .Call(Cinterpolate_prepare, as_numeric(x), as_numeric(y), type)
   ret <- function(x) {
     y <- .Call(Cinterpolate_eval, ptr, as_numeric(x))

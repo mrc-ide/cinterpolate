@@ -110,3 +110,40 @@ test_that("interpolation", {
                  rep(NA_real_, ncol(y3)))
   }
 })
+
+test_that("invalid type", {
+  x <- y <- runif(5)
+  expect_error(interpolation_function(x, y, "foo"),
+               "Invalid interpolation type 'foo'")
+  expect_error(interpolation_function(x, y, NA_character_),
+               "Expected 'type' to be a scalar character")
+  expect_error(interpolation_function(x, y, 1),
+               "Expected 'type' to be a scalar character")
+  expect_error(interpolation_function(x, y, letters),
+               "Expected 'type' to be a scalar character")
+})
+
+test_that("coersion", {
+  x <- as.integer(0:5)
+  y <- as.integer(0:5)
+  f <- interpolation_function(x, y, "linear")
+  info <- attr(f, "info")()
+  expect_false(is.integer(info$x))
+  expect_false(is.integer(info$y))
+  xx <- seq(0, 5, length.out = 11)
+  expect_identical(f(xx), xx)
+})
+
+test_that("invalid input", {
+  expect_error(interpolation_function(1:4, 1:5, "linear"),
+               "Expected 'y' to have total length of 4 (4 x 1)",
+               fixed = TRUE)
+})
+
+test_that("survive serialisation without crash", {
+  f <- interpolation_function(1:5, 1:5, "linear")
+  g <- unserialize(serialize(f, NULL))
+  expect_error(g(1), "interpolate_data already freed")
+  environment(g)$ptr <- 1L
+  expect_error(g(1), "Expected an external pointer")
+})
