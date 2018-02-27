@@ -12,3 +12,10 @@ Despite being only C code, this package requires a fortran compiler because it u
 * **macOS** Install Xcode, confirm the command line tools are installed and rthen install gfortran following [these instructions](https://cran.r-project.org/bin/macosx/tools/)
 * **windows** [Rtools](https://cran.r-project.org/bin/windows/Rtools/) includes gfortran
 * **linux** Something like `apt-get install gfortran` depending on your platform
+
+After that, install with
+
+```r
+drat:::add("mrc-ide")
+install.packages("cinterpolate")
+```
