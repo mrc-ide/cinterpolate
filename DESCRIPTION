@@ -1,7 +1,10 @@
 Package: cinterpolate
 Title: Interoplation From C
-Version: 0.0.1
-Description: Simple interpolation methods designed to be used from C code.
+Version: 1.0.0
+Description: Simple interpolation methods designed to be used from C
+  code. Supports constant, linear and spline interpolation. An R
+  wrapper is included but this package is primarily designed to be
+  used from C code using R's 'LinkingTo:' support.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Author: Rich FitzJohn
