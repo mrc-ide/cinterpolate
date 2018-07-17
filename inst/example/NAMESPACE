@@ -1,2 +1,2 @@
-useDynLib(testing)
+useDynLib(example)
 import(cinterpolate)

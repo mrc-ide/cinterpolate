@@ -1,0 +1,10 @@
+Package: example
+Title: Testing 'cinterpolate' Package Use
+Version: 0.0.1
+Description: Testing that using 'cinterpolate' from another package works.
+License: CC0
+Authors@R: person("Rich", "FitzJohn", role = c("aut", "cre"),
+    email = "rich.fitzjohn@gmail.com")
+LinkingTo: cinterpolate
+Imports: cinterpolate
+Suggests: testthat

@@ -12,14 +12,15 @@ test_that("package check", {
   Sys.setenv("R_TESTS" = "")
 
   R <- file.path(R.home(), "bin", "R")
-  res <- system3(R, c("CMD", "build", "testing"))
+  example <- system.file("example", package = "cinterpolate")
+  res <- system3(R, c("CMD", "build", example))
   expect_true(res$success)
 
-  v <- read.dcf("testing/DESCRIPTION", "Version")[[1]]
-  path <- sprintf("testing_%s.tar.gz", v)
+  v <- read.dcf(file.path(example, "DESCRIPTION"), "Version")[[1]]
+  path <- sprintf("example_%s.tar.gz", v)
   res <- system3(R, c("CMD", "check", "--no-manual", path))
   expect_true(res$success)
 
   file.remove(path)
-  unlink("testing.Rcheck", recursive = TRUE)
+  unlink("example.Rcheck", recursive = TRUE)
 })
