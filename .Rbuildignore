@@ -28,7 +28,7 @@
 ^man-roxygen$
 ^autodoc\.R$
 ^\.valgrind_ignore$
-^vignettes/src$
+^vignettes_src$
 ^.lintr$
 ^tests/testthat/example\.so\.dSYM$
 ^CONDUCT\.md$

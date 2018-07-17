@@ -50,7 +50,7 @@ README.md: README.Rmd
 	sed -i.bak 's/[[:space:]]*$$//' $@
 	rm -f $@.bak
 
-vignettes/%.Rmd: vignettes/src/%.R
+vignettes/%.Rmd: vignettes_src/%.R
 	${RSCRIPT} -e 'library(sowsear); sowsear("$<", output="$@")'
 vignettes: vignettes/cinterpolate.Rmd
 	${RSCRIPT} -e 'library(methods); devtools::build_vignettes()'

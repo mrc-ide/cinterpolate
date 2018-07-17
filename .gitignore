@@ -3,3 +3,4 @@
 .RData
 testing.Rcheck
 testing*.tar.gz
+inst/doc
