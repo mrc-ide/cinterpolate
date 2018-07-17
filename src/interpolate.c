@@ -5,9 +5,9 @@
 // http://blog.ivank.net/interpolation-with-cubic-splines.html
 
 interpolate_data *interpolate_alloc(const char *type_name, size_t n, size_t ny,
-                                    double *x, double *y) {
+                                    double *x, double *y, bool auto_free) {
   interpolate_type type = interpolate_type_from_name(type_name);
-  return interpolate_alloc2(type, n, ny, x, y);
+  return interpolate_alloc2(type, n, ny, x, y, auto_free);
 }
 
 interpolate_type interpolate_type_from_name(const char *name) {
@@ -34,18 +34,30 @@ interpolate_type interpolate_type_from_name(const char *name) {
 // (storing the knots etc).
 interpolate_data * interpolate_alloc2(interpolate_type type,
                                       size_t n, size_t ny,
-                                      double *x, double *y) {
-  interpolate_data * ret = Calloc(1, interpolate_data);
+                                      double *x, double *y,
+                                      bool auto_free) {
+  interpolate_data * ret = NULL;
+  if (auto_free) {
+    ret = (interpolate_data*)R_alloc(1, sizeof(interpolate_data));
+  } else {
+    ret = (interpolate_data*)Calloc(1, interpolate_data);
+  }
   ret->type = type;
   ret->n = n;
   ret->ny = ny;
   ret->i = 0;
-  ret->x = (double*) Calloc(n, double);
-  ret->y = (double*) Calloc(n * ny, double);
+  if (auto_free) {
+    ret->x = (double*) R_alloc(n, sizeof(double));
+    ret->y = (double*) R_alloc(n * ny, sizeof(double));
+  } else {
+    ret->x = (double*) Calloc(n, double);
+    ret->y = (double*) Calloc(n * ny, double);
+  }
   ret->k = NULL;
   memcpy(ret->x, x, sizeof(double) * n);
   memcpy(ret->y, y, sizeof(double) * n * ny);
   ret->eval = NULL;
+  ret->auto_free = auto_free;
 
   switch (type) {
   case CONSTANT:
@@ -56,7 +68,12 @@ interpolate_data * interpolate_alloc2(interpolate_type type,
     break;
   case SPLINE:
     ret->eval = &interpolate_spline_eval;
-    ret->k = (double*) Calloc(n * ny, double);
+    if (auto_free) {
+      ret->k = (double*) R_alloc(n * ny, sizeof(double));
+    } else {
+      ret->k = (double*) Calloc(n * ny, double);
+    }
+    // This is _always_ transient
     double *A = (double*)R_alloc(n * 3, sizeof(double));
     spline_calc_A(n, x, A);
     spline_calc_B(n, ny, x, y, ret->k);
@@ -67,7 +84,7 @@ interpolate_data * interpolate_alloc2(interpolate_type type,
 }
 
 void interpolate_free(interpolate_data* obj) {
-  if (obj) {
+  if (obj && !obj->auto_free) {
     Free(obj->x);
     Free(obj->y);
     Free(obj->k);

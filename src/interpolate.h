@@ -1,4 +1,5 @@
 #include <stddef.h>
+#include <stdbool.h>
 
 typedef enum {
   CONSTANT,
@@ -19,14 +20,16 @@ struct interpolate_data_t  {
   double *y;    // y points of interpolation
   double *k;    // knots when using spline interpolation
   interpolate_eval_t eval;
+  bool auto_free;
 };
 
 interpolate_data * interpolate_alloc(const char *name, size_t n, size_t ny,
-                                     double *x, double *y);
+                                     double *x, double *y, bool auto_clean);
 interpolate_type interpolate_type_from_name(const char *name);
 
 interpolate_data * interpolate_alloc2(interpolate_type type, size_t n,
-                                      size_t ny, double *x, double *y);
+                                      size_t ny, double *x, double *y,
+                                      bool auto_clean);
 void interpolate_free(interpolate_data* obj);
 int interpolate_eval(double x, interpolate_data *obj, double *y);
 int interpolate_constant_eval(double x, interpolate_data* obj, double *y);

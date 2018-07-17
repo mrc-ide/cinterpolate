@@ -11,7 +11,7 @@ SEXP test(SEXP r_x, SEXP r_y, SEXP r_xout, SEXP r_type) {
 
   size_t n = length(r_x);
   size_t ny = is_matrix ? ncols(r_y) : 1;
-  void *obj = cinterpolate_alloc(type, n, ny, REAL(r_x), REAL(r_y));
+  void *obj = cinterpolate_alloc(type, n, ny, REAL(r_x), REAL(r_y), true);
 
   size_t nxout = length(r_xout);
   SEXP r_yout = PROTECT(is_matrix ?
@@ -22,8 +22,6 @@ SEXP test(SEXP r_x, SEXP r_y, SEXP r_xout, SEXP r_type) {
     cinterpolate_eval(xout[i], obj, yout);
     yout += ny;
   }
-
-  cinterpolate_free(obj);
 
   UNPROTECT(1);
   return r_yout;

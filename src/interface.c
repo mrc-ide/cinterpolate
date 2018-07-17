@@ -18,7 +18,7 @@ SEXP r_interpolate_prepare(SEXP r_x, SEXP r_y, SEXP r_type) {
     Rf_error("Expected 'y' to have total length of %d (%d x %d)",
              ny * n, n, ny);
   }
-  interpolate_data * data = interpolate_alloc(type_name, n, ny, x, y);
+  interpolate_data * data = interpolate_alloc(type_name, n, ny, x, y, false);
 
   SEXP r_ptr = R_MakeExternalPtr(data, R_NilValue, R_NilValue);
   R_RegisterCFinalizer(r_ptr, interpolate_data_finalize);

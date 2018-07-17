@@ -6,15 +6,15 @@
 #include <R_ext/Rdynload.h>
 
 void * cinterpolate_alloc(const char *type, size_t n, size_t ny,
-                          double *x, double *y) {
+                          double *x, double *y, bool auto_clean) {
   typedef void* interpolate_alloc_t(const char *, size_t, size_t,
-                                    double*, double*);
+                                    double*, double*, bool);
   static interpolate_alloc_t *fun;
   if (fun == NULL) {
     fun = (interpolate_alloc_t*)
       R_GetCCallable("cinterpolate", "interpolate_alloc");
   }
-  return fun(type, n, ny, x, y);
+  return fun(type, n, ny, x, y, auto_clean);
 }
 
 int cinterpolate_eval(double x, void *obj, double *y) {
