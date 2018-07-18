@@ -95,7 +95,7 @@ writeLines(c(
                         package = "cinterpolate")),
   "```"))
 
-## * Becase this is the only use of cinterpolate in the package, we
+## * Because this is the only use of cinterpolate in the package, we
 ##   can directly include `cinterpolate/cinterpolate.c`
 ##
 ## * The `interpolate_alloc` function is used with `auto_clean = true`

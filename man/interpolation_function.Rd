@@ -24,7 +24,7 @@ would be available from C code.  This will give very similar
 answers to R's \code{\link{splinefun}} function.  This is not the
 primary intended use of the package, which is mostly designed for
 use from C/C++.  This function primarily exists for testing this
-package, and for exploring the inteface without writing C code.
+package, and for exploring the interface without writing C code.
 }
 \examples{
 
