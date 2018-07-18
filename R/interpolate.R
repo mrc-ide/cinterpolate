@@ -52,13 +52,6 @@
 ##' f <- cinterpolate::interpolation_function(x, y, "spline")
 ##' matplot(xx, f(xx), type = "l", lty = 1)
 interpolation_function <- function(x, y, type) {
-  as_numeric <- function(a) {
-    if (storage.mode(a) == "integer") {
-      storage.mode(a) <- "numeric"
-    }
-    a
-  }
-
   is_matrix <- is.matrix(y)
   ny <- if (is_matrix) ncol(y) else 1L
   if (!is.character(type) || length(type) != 1L || is.na(type)) {
@@ -75,4 +68,12 @@ interpolation_function <- function(x, y, type) {
   }
   attr(ret, "info") <- function() .Call(Cinterpolate_data_info, ptr)
   ret
+}
+
+
+as_numeric <- function(a) {
+  if (storage.mode(a) == "integer") {
+    storage.mode(a) <- "numeric"
+  }
+  a
 }
