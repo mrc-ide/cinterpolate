@@ -66,6 +66,7 @@ writeLines(c(
 
 ## The `DESCRIPTION` looks like
 
+##+ echo = FALSE, results = "asis"
 writeLines(c(
   "```plain",
   readLines(system.file("example/DESCRIPTION",
@@ -79,6 +80,7 @@ writeLines(c(
 ## will be available by importing the package `import(cinterpolate)`
 ## (`importFrom(cinterpolate, interpolate_function)` would also be
 ## fine).
+##+ echo = FALSE, results = "asis"
 writeLines(c(
   "```plain",
   readLines(system.file("example/NAMESPACE",
@@ -86,6 +88,7 @@ writeLines(c(
   "```"))
 
 ## The actual usage from C looks like:
+##+ echo = FALSE, results = "asis"
 writeLines(c(
   "```c",
   readLines(system.file("example/src/testing.c",

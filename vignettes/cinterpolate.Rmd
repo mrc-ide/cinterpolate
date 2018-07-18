@@ -68,7 +68,7 @@ A complete example of use is included in the package as `system.file("example", 
 
 The `DESCRIPTION` looks like
 
-``` {r }
+``` {r echo = FALSE, results = "asis"}
 writeLines(c(
   "```plain",
   readLines(system.file("example/DESCRIPTION",
@@ -83,7 +83,7 @@ loaded (`useDynLib(example)`) and that `cinterpolate`'s functions
 will be available by importing the package `import(cinterpolate)`
 (`importFrom(cinterpolate, interpolate_function)` would also be
 fine).
-``` {r }
+``` {r echo = FALSE, results = "asis"}
 writeLines(c(
   "```plain",
   readLines(system.file("example/NAMESPACE",
@@ -92,7 +92,7 @@ writeLines(c(
 ```
 
 The actual usage from C looks like:
-``` {r }
+``` {r echo = FALSE, results = "asis"}
 writeLines(c(
   "```c",
   readLines(system.file("example/src/testing.c",

@@ -75,7 +75,7 @@ PKG_LIBS = ${LAPACK_LIBS} ${BLAS_LIBS} ${FLIBS}
 
 ### Example
 
-See [`tests/testthat/testing`](tests/testthat/testing) for a full example of using `cinterpolate` within a package
+See [`inst/example`](inst/example) for a full example of using `cinterpolate` within a package
 
 ## License
 
