@@ -37,12 +37,10 @@ clean:
 autodoc:
 	${RSCRIPT} autodoc.R process
 
-staticdocs:
-	@mkdir -p inst/staticdocs
-	${RSCRIPT} -e "library(methods); staticdocs::build_site()"
-	rm -f vignettes/*.html
-	@rmdir inst/staticdocs
-website: staticdocs
+pkgdown:
+	${RSCRIPT} -e "library(methods); pkgdown::build_site()"
+
+website: pkgdown
 	./update_web.sh
 
 README.md: README.Rmd
