@@ -2,8 +2,6 @@
 #include "interpolate.h"
 #include <stdbool.h>
 
-static void interpolate_data_finalize(SEXP r_ptr);
-interpolate_data* interpolate_data_get(SEXP r_ptr, bool closed_error);
 
 SEXP r_interpolate_prepare(SEXP r_x, SEXP r_y, SEXP r_type) {
   const char *type_name = CHAR(STRING_ELT(r_type, 0));
@@ -26,6 +24,7 @@ SEXP r_interpolate_prepare(SEXP r_x, SEXP r_y, SEXP r_type) {
   return r_ptr;
 }
 
+
 SEXP r_interpolate_eval(SEXP r_ptr, SEXP r_x) {
   interpolate_data * obj = interpolate_data_get(r_ptr, true);
   size_t nx = (size_t) length(r_x), ny = obj->ny;
@@ -42,6 +41,7 @@ SEXP r_interpolate_eval(SEXP r_ptr, SEXP r_x) {
   return r_y;
 }
 
+
 void interpolate_data_finalize(SEXP r_ptr) {
   interpolate_data *data = interpolate_data_get(r_ptr, false);
   if (data) {
@@ -49,6 +49,7 @@ void interpolate_data_finalize(SEXP r_ptr) {
     R_ClearExternalPtr(r_ptr);
   }
 }
+
 
 interpolate_data* interpolate_data_get(SEXP r_ptr, bool closed_error) {
   interpolate_data *data = NULL;
@@ -61,6 +62,7 @@ interpolate_data* interpolate_data_get(SEXP r_ptr, bool closed_error) {
   }
   return data;
 }
+
 
 SEXP r_interpolate_data_info(SEXP r_ptr) {
   interpolate_data *data = interpolate_data_get(r_ptr, true);
@@ -102,6 +104,7 @@ SEXP r_interpolate_data_info(SEXP r_ptr) {
   return ret;
 }
 
+
 #include <R_ext/Rdynload.h>
 #include <Rversion.h>
 
@@ -111,6 +114,7 @@ static const R_CallMethodDef call_methods[] = {
   {"Cinterpolate_data_info",   (DL_FUNC) &r_interpolate_data_info,   1},
   {NULL,                       NULL,                                 0}
 };
+
 
 // Package initialisation, required for the registration
 void R_init_cinterpolate(DllInfo *dll) {

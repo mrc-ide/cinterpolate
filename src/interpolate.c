@@ -10,6 +10,7 @@ interpolate_data *interpolate_alloc(const char *type_name, size_t n, size_t ny,
   return interpolate_alloc2(type, n, ny, x, y, auto_free);
 }
 
+
 interpolate_type interpolate_type_from_name(const char *name) {
   if (strcmp(name, "spline") == 0) {
     return SPLINE;
@@ -22,6 +23,7 @@ interpolate_type interpolate_type_from_name(const char *name) {
     return CONSTANT; // #nocov
   }
 }
+
 
 // TODO: Do we need to copy here?  If I use this from R the copy will
 // be needed because otherwise the pointers need care.  But for the
@@ -83,6 +85,7 @@ interpolate_data * interpolate_alloc2(interpolate_type type,
   return ret;
 }
 
+
 void interpolate_free(interpolate_data* obj) {
   if (obj && !obj->auto_free) {
     Free(obj->x);
@@ -92,9 +95,11 @@ void interpolate_free(interpolate_data* obj) {
   }
 }
 
+
 int interpolate_eval(double x, interpolate_data *obj, double *y) {
   return obj->eval(x, obj, y);
 }
+
 
 // Constant
 int interpolate_constant_eval(double x, interpolate_data *obj, double *y) {
@@ -128,6 +133,7 @@ int interpolate_constant_eval(double x, interpolate_data *obj, double *y) {
   return 0;
 }
 
+
 // Linear
 int interpolate_linear_eval(double x, interpolate_data* obj, double *y) {
   int i = interpolate_search(x, obj);
@@ -158,6 +164,7 @@ int interpolate_linear_eval(double x, interpolate_data* obj, double *y) {
 
   return 0;
 }
+
 
 // Spline
 int interpolate_spline_eval(double x, interpolate_data* obj, double *y) {
@@ -237,12 +244,14 @@ int interpolate_search(double target, interpolate_data *obj) {
   return i0;
 }
 
+
 double spline_eval_i(size_t i, double x, double *xs, double *ys, double *ks) {
   double t = (x - xs[i]) / (xs[i + 1] - xs[i]);
   double a =  ks[i] * (xs[i + 1] - xs[i]) - (ys[i + 1] - ys[i]);
   double b = -ks[i + 1] * (xs[i + 1] - xs[i]) + (ys[i + 1] - ys[i]);
   return (1 - t) * ys[i] + t * ys[i + 1] + t * (1 - t) * (a * (1 - t) + b * t);
 }
+
 
 void spline_calc_A(size_t n, double *x, double *A) {
   double *A0 = A, *A1 = A + n, *A2 = A + 2 * n;
@@ -261,6 +270,7 @@ void spline_calc_A(size_t n, double *x, double *A) {
   A2[nm1] = 0; // will be ignored
 }
 
+
 void spline_calc_B(size_t n, size_t ny, double *x, double *y, double *B) {
   size_t nm1 = n - 1;
   for (size_t i = 0; i < ny; ++i) {
@@ -276,6 +286,7 @@ void spline_calc_B(size_t n, size_t ny, double *x, double *y, double *B) {
     y += n;
   }
 }
+
 
 void spline_calc_solve(int n, int ny, double *A, double *B) {
   int info = 0, ldb = n;

@@ -1,3 +1,6 @@
+#ifndef CINTERPOLTE_INTERPOLATE_H_
+#define CINTERPOLTE_INTERPOLATE_H_
+
 #include <stddef.h>
 #include <stdbool.h>
 
@@ -47,3 +50,5 @@ void spline_calc_solve(int n, int ny, double *A, double *B);
 
 // Interface:
 // void odin_interpolate_check(size_t nx, size_t ny, size_t i, const char *name_arg, const char *name_target);
+
+#endif
