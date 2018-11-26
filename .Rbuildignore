@@ -1,12 +1,13 @@
+^Meta$
+^doc$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^Makefile$
 ^README\.Rmd$
 ^.travis\.yml$
 ^appveyor\.yml$
-^c-ringbuf$
 ^ignore$
-^ring_.*\.tar.gz$
+^cinterpolate_.*\.tar.gz$
 ^update_web\.sh$
 ^inst/example\.o$
 ^inst/example\.so$
@@ -23,8 +24,8 @@
 ^tests/testthat/.*\.so$
 ^tests/testthat/.*\.dll$
 ^notes\.md$
-^tests/testthat/ring_standalone$
-^src/ring.so.dSYM$
+^tests/testthat/cinterpolate_standalone$
+^src/cinterpolate.so.dSYM$
 ^man-roxygen$
 ^autodoc\.R$
 ^\.valgrind_ignore$

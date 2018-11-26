@@ -1,3 +1,5 @@
+Meta
+doc
 .Rproj.user
 .Rhistory
 .RData
@@ -5,3 +7,4 @@ testing.Rcheck
 testing*.tar.gz
 inst/doc
 docs/
+cinterpolate_*.tar.gz
