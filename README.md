@@ -2,7 +2,7 @@
 
 [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![Linux Build Status](https://travis-ci.org/mrc-ide/cinterpolate.svg?branch=master)](https://travis-ci.org/mrc-ide/cinterpolate)
-[![Windows Build status](https://ci.appveyor.com/api/projects/status/github/mrc-ide/cinterpolate?svg=true)](https://ci.appveyor.com/project/mrc-ide/cinterpolate)
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/github/mrc-ide/cinterpolate?svg=true)](https://ci.appveyor.com/project/richfitz/cinterpolate)
 [![codecov.io](https://codecov.io/github/mrc-ide/cinterpolate/coverage.svg?branch=master)](https://codecov.io/github/mrc-ide/cinterpolate?branch=master)
 
 Simple interpolation functions designed to be used from C.  There is essentially no R support in this package, save code designed to be used by the package's own testing.  `cinterpolate` is designed to be used in package code only and modification for use outside of a package is not explicitly supported.
