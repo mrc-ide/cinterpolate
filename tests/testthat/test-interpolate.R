@@ -147,3 +147,22 @@ test_that("survive serialisation without crash", {
   environment(g)$ptr <- 1L
   expect_error(g(1), "Expected an external pointer")
 })
+
+
+test_that("matrix is returned", {
+  x <- 0:10
+  y <- cbind(sin(x), cos(x))
+  f <- cinterpolate::interpolation_function(x, y, "spline")
+  expect_identical(f(x), y)
+})
+
+
+test_that("array", {
+  tp <- c(0, 1, 2)
+  zp <- array(c(c(0, 1, 0),
+                c(0, 2, 0),
+                c(0, 3, 0),
+                c(0, 4, 0)), c(length(tp), 2, 2))
+  f <- cinterpolate::interpolation_function(tp, zp, "constant")
+  expect_identical(f(tp), zp)
+})

@@ -31,10 +31,14 @@ SEXP r_interpolate_eval(SEXP r_ptr, SEXP r_x) {
   const double *x = REAL(r_x);
   SEXP r_y = PROTECT(allocVector(REALSXP, nx * ny));
   double * y = REAL(r_y);
+  double *tmp = (double*) R_alloc(obj->ny, sizeof(double));
 
   for (size_t i = 0; i < nx; ++i) {
-    interpolate_eval(x[i], obj, y);
-    y += ny;
+    interpolate_eval(x[i], obj, tmp);
+    for (size_t j = 0, k = i; j < obj->ny; ++j) {
+      y[k] = tmp[j];
+      k += nx;
+    }
   }
 
   UNPROTECT(1);

@@ -52,19 +52,27 @@
 ##' f <- cinterpolate::interpolation_function(x, y, "spline")
 ##' matplot(xx, f(xx), type = "l", lty = 1)
 interpolation_function <- function(x, y, type) {
-  is_matrix <- is.matrix(y)
-  ny <- if (is_matrix) ncol(y) else 1L
   if (!is.character(type) || length(type) != 1L || is.na(type)) {
     stop("Expected 'type' to be a scalar character")
   }
+  dim <- dim(y)
+  if (is.null(dim)) {
+    is_array <- FALSE
+  } else {
+    is_array <- TRUE
+    if (length(dim) > 2) {
+      y <- matrix(y, length(x))
+    }
+    dim <- dim[-1L]
+  }
+  is_array <- !is.null(dim)
   ptr <- .Call(Cinterpolate_prepare, as_numeric(x), as_numeric(y), type)
   ret <- function(x) {
     y <- .Call(Cinterpolate_eval, ptr, as_numeric(x))
-    if (is_matrix) {
-      matrix(y, ncol = ny, byrow = TRUE)
-    } else {
-      y
+    if (is_array) {
+      dim(y) <- c(length(x), dim)
     }
+    y
   }
   attr(ret, "info") <- function() .Call(Cinterpolate_data_info, ptr)
   ret
