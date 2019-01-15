@@ -14,6 +14,11 @@
 ##' @param type Character string indicating the interpolation type
 ##'   ("constant", "linear" or "spline").
 ##'
+##' @param scalar Return a function that will compute only a single
+##'   \code{x} input at a time.  This is more similar to the C
+##'   interface and is equivalent to dropping the first dimension of
+##'   the output.
+##'
 ##' @return A function that can be used to interpolate the function(s)
 ##'   defined by \code{x} and \code{y} to new values of {x}.
 ##'
@@ -51,7 +56,7 @@
 ##' y <- cbind(sin(x), cos(x))
 ##' f <- cinterpolate::interpolation_function(x, y, "spline")
 ##' matplot(xx, f(xx), type = "l", lty = 1)
-interpolation_function <- function(x, y, type) {
+interpolation_function <- function(x, y, type, scalar = FALSE) {
   if (!is.character(type) || length(type) != 1L || is.na(type)) {
     stop("Expected 'type' to be a scalar character")
   }
@@ -67,12 +72,26 @@ interpolation_function <- function(x, y, type) {
   }
   is_array <- !is.null(dim)
   ptr <- .Call(Cinterpolate_prepare, as_numeric(x), as_numeric(y), type)
-  ret <- function(x) {
-    y <- .Call(Cinterpolate_eval, ptr, as_numeric(x))
-    if (is_array) {
-      dim(y) <- c(length(x), dim)
+
+  if (scalar) {
+    ret <- function(x) {
+      if (length(x) != 1L) {
+        stop("Expected a single 'x' value")
+      }
+      y <- .Call(Cinterpolate_eval, ptr, as_numeric(x))
+      if (is_array) {
+        dim(y) <- dim
+      }
+      y
     }
-    y
+  } else {
+    ret <- function(x) {
+      y <- .Call(Cinterpolate_eval, ptr, as_numeric(x))
+      if (is_array) {
+        dim(y) <- c(length(x), dim)
+      }
+      y
+    }
   }
   attr(ret, "info") <- function() .Call(Cinterpolate_data_info, ptr)
   ret

@@ -4,7 +4,7 @@
 \alias{interpolation_function}
 \title{Create an interpolation function}
 \usage{
-interpolation_function(x, y, type)
+interpolation_function(x, y, type, scalar = FALSE)
 }
 \arguments{
 \item{x}{Independent variable}
@@ -13,6 +13,11 @@ interpolation_function(x, y, type)
 
 \item{type}{Character string indicating the interpolation type
 ("constant", "linear" or "spline").}
+
+\item{scalar}{Return a function that will compute only a single
+\code{x} input at a time.  This is more similar to the C
+interface and is equivalent to dropping the first dimension of
+the output.}
 }
 \value{
 A function that can be used to interpolate the function(s)

@@ -166,3 +166,35 @@ test_that("array", {
   f <- cinterpolate::interpolation_function(tp, zp, "constant")
   expect_identical(f(tp), zp)
 })
+
+
+test_that("scalar input / scalar output", {
+  t <- 0:10
+  y <- sin(t)
+  f <- cinterpolate::interpolation_function(t, y, "spline", TRUE)
+  expect_error(f(t), "Expected a single 'x' value")
+  expect_identical(vapply(t, f, numeric(1)), y)
+})
+
+
+test_that("matrix input / scalar output", {
+  t <- 0:10
+  y <- cbind(sin(t), cos(t))
+  f <- cinterpolate::interpolation_function(t, y, "spline", TRUE)
+  expect_error(f(t), "Expected a single 'x' value")
+  expect_identical(t(vapply(t, f, numeric(2))), y)
+})
+
+
+test_that("array input / scalar output", {
+  tp <- c(0, 1, 2)
+  zp <- array(c(c(0, 1, 0),
+                c(0, 2, 0),
+                c(0, 3, 0),
+                c(0, 4, 0)), c(length(tp), 2, 2))
+  f <- cinterpolate::interpolation_function(tp, zp, "constant", TRUE)
+  expect_error(f(tp), "Expected a single 'x' value")
+  expect_equal(f(0), zp[1, , ])
+  expect_equal(f(1), zp[2, , ])
+  expect_equal(f(2), zp[3, , ])
+})
