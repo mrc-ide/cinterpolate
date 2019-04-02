@@ -11,7 +11,7 @@ Simple interpolation functions designed to be used from C.  There is essentially
 
 Despite being only C code, this package requires a fortran compiler because it uses LAPACK and BLAS.
 
-* **macOS** Install Xcode, confirm the command line tools are installed and rthen install gfortran following [these instructions](https://cran.r-project.org/bin/macosx/tools/)
+* **macOS** Install Xcode, confirm the command line tools are installed and then install gfortran following [these instructions](https://cran.r-project.org/bin/macosx/tools/)
 * **windows** [Rtools](https://cran.r-project.org/bin/windows/Rtools/) includes gfortran
 * **linux** Something like `apt-get install gfortran` depending on your platform
 
