@@ -46,6 +46,10 @@ void *cinterpolate_alloc(const char *type, size_t n, size_t ny,
 //   obj: The interpolation object, as returned by `cinterpolate_alloc`
 //
 //   y: An array of length `ny` to store the interpolated values
+//
+// The return value is 0 if the interpolation is successful (with x
+// lying within the range of values that the interpolation function
+// supports), -1 otherwise
 int cinterpolate_eval(double x, void *obj, double *y);
 
 // Clean up all allocated memory
