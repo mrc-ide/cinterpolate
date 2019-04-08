@@ -23,18 +23,23 @@ struct interpolate_data_t  {
   double *y;    // y points of interpolation
   double *k;    // knots when using spline interpolation
   interpolate_eval_t eval;
+  bool fail_on_extrapolate;
   bool auto_free;
 };
 
 interpolate_data * interpolate_alloc(const char *name, size_t n, size_t ny,
-                                     double *x, double *y, bool auto_clean);
+                                     double *x, double *y,
+                                     bool fail_on_extrapolate,
+                                     bool auto_clean);
 interpolate_type interpolate_type_from_name(const char *name);
 
 interpolate_data * interpolate_alloc2(interpolate_type type, size_t n,
                                       size_t ny, double *x, double *y,
+                                      bool fail_on_extrapolate,
                                       bool auto_clean);
 void interpolate_free(interpolate_data* obj);
 int interpolate_eval(double x, interpolate_data *obj, double *y);
+int interpolate_eval_fail(double x, interpolate_data *obj, double *y);
 int interpolate_constant_eval(double x, interpolate_data* obj, double *y);
 int interpolate_linear_eval(double x, interpolate_data* obj, double *y);
 int interpolate_spline_eval(double x, interpolate_data* obj, double *y);
@@ -47,8 +52,5 @@ double spline_eval_i(size_t i, double x, double *xs, double *ys, double *ks);
 void spline_calc_A(size_t n, double *x, double *A);
 void spline_calc_B(size_t n, size_t ny, double *x, double *y, double *B);
 void spline_calc_solve(int n, int ny, double *A, double *B);
-
-// Interface:
-// void odin_interpolate_check(size_t nx, size_t ny, size_t i, const char *name_arg, const char *name_target);
 
 #endif

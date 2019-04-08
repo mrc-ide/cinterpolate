@@ -5,9 +5,10 @@
 // http://blog.ivank.net/interpolation-with-cubic-splines.html
 
 interpolate_data *interpolate_alloc(const char *type_name, size_t n, size_t ny,
-                                    double *x, double *y, bool auto_free) {
+                                    double *x, double *y,
+                                    bool fail_on_extrapolate, bool auto_free) {
   interpolate_type type = interpolate_type_from_name(type_name);
-  return interpolate_alloc2(type, n, ny, x, y, auto_free);
+  return interpolate_alloc2(type, n, ny, x, y, fail_on_extrapolate, auto_free);
 }
 
 
@@ -37,6 +38,7 @@ interpolate_type interpolate_type_from_name(const char *name) {
 interpolate_data * interpolate_alloc2(interpolate_type type,
                                       size_t n, size_t ny,
                                       double *x, double *y,
+                                      bool fail_on_extrapolate,
                                       bool auto_free) {
   interpolate_data * ret = NULL;
   if (auto_free) {
@@ -59,6 +61,7 @@ interpolate_data * interpolate_alloc2(interpolate_type type,
   memcpy(ret->x, x, sizeof(double) * n);
   memcpy(ret->y, y, sizeof(double) * n * ny);
   ret->eval = NULL;
+  ret->fail_on_extrapolate = fail_on_extrapolate;
   ret->auto_free = auto_free;
 
   switch (type) {
@@ -101,18 +104,23 @@ int interpolate_eval(double x, interpolate_data *obj, double *y) {
 }
 
 
+int interpolate_eval_fail(double x, interpolate_data *obj, double *y) {
+  if (obj->fail_on_extrapolate) {
+    Rf_error("Interpolation failed as %f is out of range", x);
+  }
+  for (size_t i = 0; i < obj->ny; ++i) {
+    y[i] = NA_REAL;
+  }
+  return -1;
+}
+
+
 // Constant
 int interpolate_constant_eval(double x, interpolate_data *obj, double *y) {
   // Do a hunt/bisect search here
   int i = interpolate_search(x, obj);
-  // In theory we might be able to handle this, but it's simpler to
-  // forbid it I think.  In odin we'll do a check that the
-  // interpolation times span the entire range of integration times.
   if (i < 0) {
-    for (size_t j = 0; j < obj->ny; ++j) {
-      y[j] = NA_REAL;
-    }
-    return -1;
+    return interpolate_eval_fail(x, obj, y);
   } else if (i == (int) obj->n) { // off the rhs
     i = obj->n - 1;
   }
@@ -141,10 +149,7 @@ int interpolate_linear_eval(double x, interpolate_data* obj, double *y) {
   // forbid it I think.  In odin we'll do a check that the
   // interpolation times span the entire range of integration times.
   if (i < 0 || i == (int)obj->n) { // off the lhs or rhs
-    for (size_t j = 0; j < obj->ny; ++j) {
-      y[j] = NA_REAL;
-    }
-    return -1;
+    return interpolate_eval_fail(x, obj, y);
   }
 
   // Here we need to compute some things.
@@ -170,10 +175,7 @@ int interpolate_linear_eval(double x, interpolate_data* obj, double *y) {
 int interpolate_spline_eval(double x, interpolate_data* obj, double *y) {
   int i = interpolate_search(x, obj);
   if (i < 0 || i == (int)obj->n) { // off the lhs or rhs
-    for (size_t j = 0; j < obj->ny; ++j) {
-      y[j] = NA_REAL;
-    }
-    return -1;
+    return interpolate_eval_fail(x, obj, y);
   }
   double *ys = obj->y, *ks = obj->k;
   for (size_t j = 0; j < obj->ny; ++j, ys += obj->n, ks += obj->n) {

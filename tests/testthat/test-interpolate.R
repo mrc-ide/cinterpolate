@@ -198,3 +198,30 @@ test_that("array input / scalar output", {
   expect_equal(f(1), zp[2, , ])
   expect_equal(f(2), zp[3, , ])
 })
+
+
+test_that("Fail on extrapolation: constant", {
+  x <- as.numeric(0:5)
+  y <- runif(length(x))
+  f <- interpolation_function(x, y, "constant", TRUE, TRUE)
+  expect_error(f(-1), "Interpolation failed as -1.* is out of range")
+  expect_equal(f(10), y[[length(y)]])
+})
+
+
+test_that("Fail on extrapolation: linear", {
+  x <- as.numeric(0:5)
+  y <- runif(length(x))
+  f <- interpolation_function(x, y, "linear", TRUE, TRUE)
+  expect_error(f(-1), "Interpolation failed as -1.* is out of range")
+  expect_error(f(10), "Interpolation failed as 10.* is out of range")
+})
+
+
+test_that("Fail on extrapolation: spline", {
+  x <- as.numeric(0:5)
+  y <- runif(length(x))
+  f <- interpolation_function(x, y, "spline", TRUE, TRUE)
+  expect_error(f(-1), "Interpolation failed as -1.* is out of range")
+  expect_error(f(10), "Interpolation failed as 10.* is out of range")
+})

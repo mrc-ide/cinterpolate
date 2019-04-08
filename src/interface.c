@@ -3,7 +3,8 @@
 #include <stdbool.h>
 
 
-SEXP r_interpolate_prepare(SEXP r_x, SEXP r_y, SEXP r_type) {
+SEXP r_interpolate_prepare(SEXP r_x, SEXP r_y, SEXP r_type,
+                           SEXP r_fail_on_extrapolate) {
   const char *type_name = CHAR(STRING_ELT(r_type, 0));
   size_t n = (size_t)length(r_x), ny;
   double *x = REAL(r_x), *y = REAL(r_y);
@@ -16,7 +17,9 @@ SEXP r_interpolate_prepare(SEXP r_x, SEXP r_y, SEXP r_type) {
     Rf_error("Expected 'y' to have total length of %d (%d x %d)",
              ny * n, n, ny);
   }
-  interpolate_data * data = interpolate_alloc(type_name, n, ny, x, y, false);
+  const bool fail_on_extrapolate = asLogical(r_fail_on_extrapolate);
+  interpolate_data * data = interpolate_alloc(type_name, n, ny, x, y,
+                                              fail_on_extrapolate, false);
 
   SEXP r_ptr = R_MakeExternalPtr(data, R_NilValue, R_NilValue);
   R_RegisterCFinalizer(r_ptr, interpolate_data_finalize);
@@ -113,7 +116,7 @@ SEXP r_interpolate_data_info(SEXP r_ptr) {
 #include <Rversion.h>
 
 static const R_CallMethodDef call_methods[] = {
-  {"Cinterpolate_prepare",     (DL_FUNC) &r_interpolate_prepare,     3},
+  {"Cinterpolate_prepare",     (DL_FUNC) &r_interpolate_prepare,     4},
   {"Cinterpolate_eval",        (DL_FUNC) &r_interpolate_eval,        2},
   {"Cinterpolate_data_info",   (DL_FUNC) &r_interpolate_data_info,   1},
   {NULL,                       NULL,                                 0}

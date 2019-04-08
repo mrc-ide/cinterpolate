@@ -19,6 +19,9 @@
 ##'   interface and is equivalent to dropping the first dimension of
 ##'   the output.
 ##'
+##' @param fail_on_extrapolate Logical, indicating if extrapolation
+##'   should cause an failure (rather than an NA value)
+##'
 ##' @return A function that can be used to interpolate the function(s)
 ##'   defined by \code{x} and \code{y} to new values of {x}.
 ##'
@@ -56,7 +59,8 @@
 ##' y <- cbind(sin(x), cos(x))
 ##' f <- cinterpolate::interpolation_function(x, y, "spline")
 ##' matplot(xx, f(xx), type = "l", lty = 1)
-interpolation_function <- function(x, y, type, scalar = FALSE) {
+interpolation_function <- function(x, y, type, scalar = FALSE,
+                                   fail_on_extrapolate = FALSE) {
   if (!is.character(type) || length(type) != 1L || is.na(type)) {
     stop("Expected 'type' to be a scalar character")
   }
@@ -71,7 +75,8 @@ interpolation_function <- function(x, y, type, scalar = FALSE) {
     dim <- dim[-1L]
   }
   is_array <- !is.null(dim)
-  ptr <- .Call(Cinterpolate_prepare, as_numeric(x), as_numeric(y), type)
+  ptr <- .Call(Cinterpolate_prepare, as_numeric(x), as_numeric(y), type,
+               fail_on_extrapolate)
 
   if (scalar) {
     ret <- function(x) {

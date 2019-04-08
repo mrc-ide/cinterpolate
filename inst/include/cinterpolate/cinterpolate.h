@@ -28,16 +28,21 @@ extern "C" {
 //       order (i.e., the first `n` values are the first series to
 //       interpolate over).
 //
+//   fail_on_extrapolate: if true, when an extrapolation occurs throw
+//       an error; if false return NA_REAL
+//
 //   auto_free: automatically clean up the interpolation object on
-//   return to R. This uses `R_alloc` for allocations rather than
-//   `Calloc` so freeing will always happen (even on error elsewhere
-//   in the code). However, this prevents returning back a pointer to
-//   R that will last longer than the call into C code.
+//       return to R. This uses `R_alloc` for allocations rather than
+//       `Calloc` so freeing will always happen (even on error
+//       elsewhere in the code). However, this prevents returning back
+//       a pointer to R that will last longer than the call into C
+//       code.
 //
 // The return value is an opaque pointer that can be passed through to
 // `cinterpolate_eval` and `cinterpolate_free`
 void *cinterpolate_alloc(const char *type, size_t n, size_t ny,
-                         double *x, double *y, bool auto_free);
+                         double *x, double *y, bool fail_on_extrapolate,
+                         bool auto_free);
 
 // Evaluate the interpolated function at a new `x` point.
 //

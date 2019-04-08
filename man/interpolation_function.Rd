@@ -4,7 +4,8 @@
 \alias{interpolation_function}
 \title{Create an interpolation function}
 \usage{
-interpolation_function(x, y, type, scalar = FALSE)
+interpolation_function(x, y, type, scalar = FALSE,
+  fail_on_extrapolate = FALSE)
 }
 \arguments{
 \item{x}{Independent variable}
@@ -18,6 +19,9 @@ interpolation_function(x, y, type, scalar = FALSE)
 \code{x} input at a time.  This is more similar to the C
 interface and is equivalent to dropping the first dimension of
 the output.}
+
+\item{fail_on_extrapolate}{Logical, indicating if extrapolation
+should cause an failure (rather than an NA value)}
 }
 \value{
 A function that can be used to interpolate the function(s)
