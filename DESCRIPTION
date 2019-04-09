@@ -1,10 +1,12 @@
 Package: cinterpolate
 Title: Interpolation From C
-Version: 0.9.3
+Version: 1.0.0
 Description: Simple interpolation methods designed to be used from C
     code. Supports constant, linear and spline interpolation. An R
     wrapper is included but this package is primarily designed to be
-    used from C code using Rs 'LinkingTo:' support.
+    used from C code using 'LinkingTo'.  The spline calculations are
+    classical cubic interpolation, e.g., Forsythe, Malcolm and Moler
+    (1977) <ISBN: 9780131653320>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Authors@R: person("Rich", "FitzJohn", role = c("aut", "cre"),
