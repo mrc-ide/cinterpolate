@@ -190,7 +190,14 @@ int interpolate_search(double target, interpolate_data *obj) {
   double *x = obj->x;
 
   if (x[i0] <= target) { // advance up until we hit the top
-    if (i0 == (int)n - 1) { // guess is already *at* the top.
+    if (i0 >= (int)n - 1) { // guess is already *at* the top.
+      // This exit is left in here to avoid the possibility of an
+      // infinite loop or reading out of range, but should not be
+      // necessary unless the object has been tampered with because we
+      // always set the guess to the lower bound of our guess for 'i'.
+      // This bit of code is derived from something in `ring`, where
+      // this was dynamic, but it makes for a fairly cheap safety
+      // check.
       return n;
     }
     i1 = i0 + inc;
@@ -223,14 +230,6 @@ int interpolate_search(double target, interpolate_data *obj) {
       }
       i0 -= inc;
     }
-  }
-
-  // Need to deal specially with this case apparently, but not sure
-  // why.  It's possible that this only needs doing on one of the
-  // early exits from the above loops.
-  if (i1 - i0 == 1 && x[i1] < target) {
-    obj->i = (size_t)i1;
-    return i1;
   }
 
   while (i1 - i0 > 1) {

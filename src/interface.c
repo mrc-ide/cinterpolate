@@ -112,6 +112,20 @@ SEXP r_interpolate_data_info(SEXP r_ptr) {
 }
 
 
+SEXP r_test_interpolate_search(SEXP r_x, SEXP r_i, SEXP r_target) {
+  double *x = REAL(r_x);
+  int n = LENGTH(r_x);
+  int i = INTEGER(r_i)[0];
+  double target = REAL(r_target)[0];
+
+  interpolate_data * data =
+    interpolate_alloc2(CONSTANT, n, 1, x, x, false, true);
+  data->i = i;
+  int res = interpolate_search(target, data);
+  return ScalarInteger(res);
+}
+
+
 #include <R_ext/Rdynload.h>
 #include <Rversion.h>
 
@@ -119,6 +133,8 @@ static const R_CallMethodDef call_methods[] = {
   {"Cinterpolate_prepare",     (DL_FUNC) &r_interpolate_prepare,     4},
   {"Cinterpolate_eval",        (DL_FUNC) &r_interpolate_eval,        2},
   {"Cinterpolate_data_info",   (DL_FUNC) &r_interpolate_data_info,   1},
+
+  {"Ctest_interpolate_search", (DL_FUNC) &r_test_interpolate_search, 3},
   {NULL,                       NULL,                                 0}
 };
 

@@ -17,3 +17,9 @@ with_wd <- function(path, code) {
   on.exit(setwd(owd))
   force(code)
 }
+
+
+test_interpolate_search <- function(x, i, target) {
+  .Call(Ctest_interpolate_search,
+        as.numeric(x), as.integer(i), as.numeric(target))
+}
