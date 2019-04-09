@@ -11,3 +11,9 @@ system3 <- function(command, args) {
 `%||%` <- function(a, b) {
   if (is.null(a)) b else a
 }
+
+with_wd <- function(path, code) {
+  owd <- setwd(path)
+  on.exit(setwd(owd))
+  force(code)
+}

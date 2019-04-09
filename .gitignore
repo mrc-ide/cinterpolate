@@ -8,3 +8,5 @@ testing*.tar.gz
 inst/doc
 docs/
 cinterpolate_*.tar.gz
+*.gcda
+*.gcno
