@@ -4,10 +4,19 @@
 [![Linux Build Status](https://travis-ci.org/mrc-ide/cinterpolate.svg?branch=master)](https://travis-ci.org/mrc-ide/cinterpolate)
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/github/mrc-ide/cinterpolate?svg=true)](https://ci.appveyor.com/project/richfitz/cinterpolate)
 [![codecov.io](https://codecov.io/github/mrc-ide/cinterpolate/coverage.svg?branch=master)](https://codecov.io/github/mrc-ide/cinterpolate?branch=master)
+[![](http://www.r-pkg.org/badges/version/cinterpolate)](https://cran.r-project.org/package=cinterpolate)
 
 Simple interpolation functions designed to be used from C.  There is essentially no R support in this package, save code designed to be used by the package's own testing.  `cinterpolate` is designed to be used in package code only and modification for use outside of a package is not explicitly supported.
 
 ## Installation
+
+`cinterpolate` is now on CRAN and can be installed with
+
+```r
+install.packages("cinterpolate")
+```
+
+### Development version
 
 Despite being only C code, this package requires a fortran compiler because it uses LAPACK and BLAS.
 
@@ -28,10 +37,11 @@ install.packages("cinterpolate")
 #include <cinterpolate/cinterpolate.h>
 ```
 
-Allocate an object to perform interpolation with.  `nx` and `x` are the size and values of the function to be interpolated, while `ny` is the number of functions to be simultaneously (but independently) interpolateed and `y` is the values for these.  If `ny > 1`, then the values of `y` are as an R matrix with `nx` rows and `ny` columns (the first `nx` values are the first function, the second `nx` are the second, and so on).
+Allocate an object to perform interpolation with.  `nx` and `x` are the size and values of the function to be interpolated, while `ny` is the number of functions to be simultaneously (but independently) interpolateed and `y` is the values for these.  If `ny > 1`, then the values of `y` are as an R matrix with `nx` rows and `ny` columns (the first `nx` values are the first function, the second `nx` are the second, and so on).  The final two are booleans: `fail_on_extrapolate` throws an error if extrapolation is requested, and `auto_free` uses `R_alloc()` rather than `Calloc` allowing automatic cleanup.
 
 ``` c
-void *obj = cinterpolate_alloc(type, nx, ny, x, y);
+void *obj = cinterpolate_alloc(type, nx, ny, x, y,
+                               fail_on_extrapolate, auto_free);
 ```
 
 With the interpolation function, an input value of `xout` and given some storage `yout` of length `ny`, determine `f(xout)` with
