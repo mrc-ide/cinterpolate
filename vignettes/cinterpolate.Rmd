@@ -19,7 +19,7 @@ set.seed(1)
 
 This package provides a minimal set of interpolation methods
 (piecewise constant, linear and spline) designed to be compatible
-with R's `interpolate` function but callable from C.  It will only
+with R's `approx` and `spline` functions but callable from C.  It will only
 be of interest to people writing C or C++ packages.
 
 The package is designed to be used with R's `LinkingTo:` support
