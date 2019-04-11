@@ -41,7 +41,7 @@ pkgdown:
 	${RSCRIPT} -e "library(methods); pkgdown::build_site()"
 
 website: pkgdown
-	./update_web.sh
+	./scripts/update_web.sh
 
 README.md: README.Rmd
 	Rscript -e 'library(methods); devtools::load_all(); knitr::knit("README.Rmd")'

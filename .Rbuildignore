@@ -8,7 +8,7 @@
 ^appveyor\.yml$
 ^ignore$
 ^cinterpolate_.*\.tar.gz$
-^update_web\.sh$
+^scripts$
 ^inst/example\.o$
 ^inst/example\.so$
 ^inst/example\.dll$
