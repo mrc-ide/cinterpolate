@@ -9,8 +9,10 @@ Description: Simple interpolation methods designed to be used from C
     (1977) <ISBN: 9780131653320>.
 License: MIT + file LICENSE
 Encoding: UTF-8
-Authors@R: person("Rich", "FitzJohn", role = c("aut", "cre"),
-    email = "rich.fitzjohn@gmail.com")
+Authors@R: c(person("Rich", "FitzJohn", role = c("aut", "cre"),
+                    email = "rich.fitzjohn@gmail.com"),
+             person("Imperial College of Science, Technology and Medicine",
+                    role = "cph"))
 URL: https://github.com/mrc-ide/cinterpolate
 BugReports: https://github.com/mrc-ide/cinterpolate/issues
 RoxygenNote: 6.1.1

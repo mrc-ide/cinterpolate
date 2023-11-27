@@ -1,10 +1,11 @@
 # cinterpolate
 
+<!-- badges: start -->
 [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Linux Build Status](https://travis-ci.org/mrc-ide/cinterpolate.svg?branch=master)](https://travis-ci.org/mrc-ide/cinterpolate)
-[![Windows Build status](https://ci.appveyor.com/api/projects/status/github/mrc-ide/cinterpolate?svg=true)](https://ci.appveyor.com/project/richfitz/cinterpolate)
+[![R-CMD-check](https://github.com/mrc-ide/cinterpolate/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mrc-ide/cinterpolate/actions/workflows/R-CMD-check.yaml)
 [![codecov.io](https://codecov.io/github/mrc-ide/cinterpolate/coverage.svg?branch=master)](https://codecov.io/github/mrc-ide/cinterpolate?branch=master)
 [![](http://www.r-pkg.org/badges/version/cinterpolate)](https://cran.r-project.org/package=cinterpolate)
+<!-- badges: end -->
 
 Simple interpolation functions designed to be used from C.  There is essentially no R support in this package, save code designed to be used by the package's own testing.  `cinterpolate` is designed to be used in package code only and modification for use outside of a package is not explicitly supported.
 
@@ -18,18 +19,20 @@ install.packages("cinterpolate")
 
 ### Development version
 
-Despite being only C code, this package requires a fortran compiler because it uses LAPACK and BLAS.
-
-* **macOS** Install Xcode, confirm the command line tools are installed and then install gfortran following [these instructions](https://cran.r-project.org/bin/macosx/tools/)
-* **windows** [Rtools](https://cran.r-project.org/bin/windows/Rtools/) includes gfortran
-* **linux** Something like `apt-get install gfortran` depending on your platform
 
 After that, install with
 
 ```r
-drat:::add("mrc-ide")
-install.packages("cinterpolate")
+install.packages(
+  "orderly2",
+  repos = c("https://mrc-ide.r-universe.dev", "https://cloud.r-project.org"))
 ```
+
+If you install from source, this package requires a fortran compiler because it uses LAPACK and BLAS, despite being only C code.
+
+* **macOS** Install Xcode, confirm the command line tools are installed and then install gfortran following [these instructions](https://cran.r-project.org/bin/macosx/tools/)
+* **windows** [Rtools](https://cran.r-project.org/bin/windows/Rtools/) includes gfortran
+* **linux** Something like `apt-get install gfortran` depending on your platform
 
 ## Usage
 
@@ -89,7 +92,7 @@ See [`inst/example`](inst/example) for a full example of using `cinterpolate` wi
 
 ## License
 
-MIT + file LICENSE © [Rich FitzJohn](https://github.com/richfitz).
+MIT + file LICENSE © Imperial College of Science, Technology and Medicine
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md).
 By participating in this project you agree to abide by its terms.
