@@ -1,9 +1,9 @@
 # cinterpolate
 
 <!-- badges: start -->
-[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
 [![R-CMD-check](https://github.com/mrc-ide/cinterpolate/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mrc-ide/cinterpolate/actions/workflows/R-CMD-check.yaml)
-[![codecov.io](https://codecov.io/github/mrc-ide/cinterpolate/coverage.svg?branch=master)](https://codecov.io/github/mrc-ide/cinterpolate?branch=master)
+[![codecov.io](https://codecov.io/github/mrc-ide/cinterpolate/coverage.svg?branch=master)](https://app.codecov.io/github/mrc-ide/cinterpolate?branch=master)
 [![](http://www.r-pkg.org/badges/version/cinterpolate)](https://cran.r-project.org/package=cinterpolate)
 <!-- badges: end -->
 
