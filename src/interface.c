@@ -14,8 +14,8 @@ SEXP r_interpolate_prepare(SEXP r_x, SEXP r_y, SEXP r_type,
     ny = 1;
   }
   if ((size_t)length(r_y) != ny * n) {
-    Rf_error("Expected 'y' to have total length of %zu (%zu x %zu)",
-             ny * n, n, ny);
+    Rf_error("Expected 'y' to have total length of %d (%d x %d)",
+             (int)(ny * n), (int)n, (int)ny);
   }
   const bool fail_on_extrapolate = asLogical(r_fail_on_extrapolate);
   interpolate_data * data = interpolate_alloc(type_name, n, ny, x, y,
