@@ -15,7 +15,8 @@ Authors@R: c(person("Rich", "FitzJohn", role = c("aut", "cre"),
                     role = "cph"))
 URL: https://github.com/mrc-ide/cinterpolate
 BugReports: https://github.com/mrc-ide/cinterpolate/issues
-RoxygenNote: 6.1.1
+RoxygenNote: 7.2.3
+Roxygen: list(markdown = TRUE)
 Suggests:
     knitr,
     rmarkdown,
