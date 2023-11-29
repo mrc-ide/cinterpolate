@@ -5,19 +5,22 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Using <code>cinterpolate</code> • cinterpolate</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Using &lt;code&gt;cinterpolate&lt;/code&gt;">
-<meta property="og:description" content="">
-<meta name="twitter:card" content="summary">
+<title>Using `cinterpolate` • cinterpolate</title>
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Using `cinterpolate`">
+<meta property="og:description" content="cinterpolate">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -30,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cinterpolate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/cinterpolate.html">Get started</a>
 </li>
@@ -51,8 +48,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/mrc-ide/cinterpolate">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://github.com/mrc-ide/cinterpolate/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -65,108 +62,134 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Using <code>cinterpolate</code>
+      <h1 data-toc-skip>Using <code>cinterpolate</code>
 </h1>
-                        <h4 class="author">Rich FitzJohn</h4>
+                        <h4 data-toc-skip class="author">Rich
+FitzJohn</h4>
             
-            <h4 class="date">2019-04-11</h4>
+            <h4 data-toc-skip class="date">2023-11-29</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/mrc-ide/cinterpolate/blob/master/vignettes/cinterpolate.Rmd"><code>vignettes/cinterpolate.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mrc-ide/cinterpolate/blob/HEAD/vignettes/cinterpolate.Rmd" class="external-link"><code>vignettes/cinterpolate.Rmd</code></a></small>
       <div class="hidden name"><code>cinterpolate.Rmd</code></div>
 
     </div>
 
     
     
-<p>This package provides a minimal set of interpolation methods (piecewise constant, linear and spline) designed to be compatible with R’s <code>approx</code> and <code>spline</code> functions but callable from C. It will only be of interest to people writing C or C++ packages.</p>
-<p>The package is designed to be used with R’s <code>LinkingTo:</code> support and is header only. This is a somewhat awkward situation for C (rather than C++). The approach is the same as taken by <a href="https://cran.r-project.org/package=ring"><code>ring</code></a>.</p>
-<div id="package-preparation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#package-preparation" class="anchor"></a>Package preparation</h2>
+<p>This package provides a minimal set of interpolation methods
+(piecewise constant, linear and spline) designed to be compatible with
+R’s <code>approx</code> and <code>spline</code> functions but callable
+from C. It will only be of interest to people writing C or C++
+packages.</p>
+<p>The package is designed to be used with R’s <code>LinkingTo:</code>
+support and is header only. This is a somewhat awkward situation for C
+(rather than C++). The approach is the same as taken by <a href="https://cran.r-project.org/package=ring" class="external-link"><code>ring</code></a>.</p>
+<div class="section level2">
+<h2 id="package-preparation">Package preparation<a class="anchor" aria-label="anchor" href="#package-preparation"></a>
+</h2>
 <ul>
-<li><p>In your <code>DESCRIPTION</code>, add a line <code>LinkingTo: cinterpolate</code>. You also need to add <code>cinterpolate</code> to <code>Imports</code> and ensure that the package is loaded before use, as it uses R’s <code>R_GetCCallable</code> interface to call the actual interpolation functions.</p></li>
-<li><p>In your <code>src/</code> directory, add a file <code>cinterpolate.c</code> containing just the line <code>#include &lt;cinterpolate/cinterpolate.c&gt;</code>.</p></li>
-<li><p>Anywhere in your C (or C++) code you want to use the interpolation code buffer, include the line <code>#include &lt;cinterpolate/cinterpolate.h&gt;</code> to include the prototypes and use the interface as described below.</p></li>
+<li><p>In your <code>DESCRIPTION</code>, add a line
+<code>LinkingTo: cinterpolate</code>. You also need to add
+<code>cinterpolate</code> to <code>Imports</code> and ensure that the
+package is loaded before use, as it uses R’s <code>R_GetCCallable</code>
+interface to call the actual interpolation functions.</p></li>
+<li><p>In your <code>src/</code> directory, add a file
+<code>cinterpolate.c</code> containing just the line
+<code>#include &lt;cinterpolate/cinterpolate.c&gt;</code>.</p></li>
+<li><p>Anywhere in your C (or C++) code you want to use the
+interpolation code buffer, include the line
+<code>#include   &lt;cinterpolate/cinterpolate.h&gt;</code> to include
+the prototypes and use the interface as described below.</p></li>
 </ul>
-<p>(I am not sure what the best practice way of doing this with a standalone shared library compiled with <code>R CMD SHLIB</code> is though; probably best to make a package.)</p>
+<p>(I am not sure what the best practice way of doing this with a
+standalone shared library compiled with <code>R CMD SHLIB</code> is
+though; probably best to make a package.)</p>
 </div>
-<div id="the-api" class="section level2">
-<h2 class="hasAnchor">
-<a href="#the-api" class="anchor"></a>The API</h2>
-<p>There are only three functions in the <code>cinterpolate</code> API; one to build the object (<code>cinterpolate_alloc</code>), one for carrying out interpolation (<code>cinterpolate_eval</code>) and one for freeing the object after calculations have been run (<code>cinterpolate_free</code>). If you allocate a cinterpolate object then you are responsible for freeing it (even on error elsewhere in code). Not doing this will cause leaks.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" title="1"><span class="pp">#ifndef CINTERPOLTE_CINTERPOLATE_H_</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="pp">#define CINTERPOLTE_CINTERPOLATE_H_</span></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="pp">#include </span><span class="im">&lt;stddef.h&gt;</span><span class="pp"> </span><span class="co">// size_t</span></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="pp">#include </span><span class="im">&lt;stdbool.h&gt;</span><span class="pp"> </span><span class="co">// bool</span></a>
-<a class="sourceLine" id="cb1-5" title="5"></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="co">// Allow use from C++</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="pp">#ifdef __cplusplus</span></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="kw">extern</span> <span class="st">"C"</span> {</a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="pp">#endif</span></a>
-<a class="sourceLine" id="cb1-10" title="10"></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co">// There are only three functions in the interface; allocation,</span></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="co">// evaluation and freeing.</span></a>
-<a class="sourceLine" id="cb1-13" title="13"></a>
-<a class="sourceLine" id="cb1-14" title="14"><span class="co">// Allocate an interpolation object.</span></a>
-<a class="sourceLine" id="cb1-15" title="15"><span class="co">//</span></a>
-<a class="sourceLine" id="cb1-16" title="16"><span class="co">//   type: The mode of interpolation. Must be one of "constant",</span></a>
-<a class="sourceLine" id="cb1-17" title="17"><span class="co">//       "linear" or "spline" (an R error is thrown if a different</span></a>
-<a class="sourceLine" id="cb1-18" title="18"><span class="co">//       value is given).</span></a>
-<a class="sourceLine" id="cb1-19" title="19"><span class="co">//</span></a>
-<a class="sourceLine" id="cb1-20" title="20"><span class="co">//   n: The number of `x` points to interpolate over</span></a>
-<a class="sourceLine" id="cb1-21" title="21"><span class="co">//</span></a>
-<a class="sourceLine" id="cb1-22" title="22"><span class="co">//   ny: the number of `y` points per `x` point.  This is 1 in the</span></a>
-<a class="sourceLine" id="cb1-23" title="23"><span class="co">//       case of zimple interpolation as used by Rs `interpolate()`</span></a>
-<a class="sourceLine" id="cb1-24" title="24"><span class="co">//</span></a>
-<a class="sourceLine" id="cb1-25" title="25"><span class="co">//   x: an array of `x` values of length `n`</span></a>
-<a class="sourceLine" id="cb1-26" title="26"><span class="co">//</span></a>
-<a class="sourceLine" id="cb1-27" title="27"><span class="co">//   y: an array of `ny` sets of `y` values.  This is in R's matrix</span></a>
-<a class="sourceLine" id="cb1-28" title="28"><span class="co">//       order (i.e., the first `n` values are the first series to</span></a>
-<a class="sourceLine" id="cb1-29" title="29"><span class="co">//       interpolate over).</span></a>
-<a class="sourceLine" id="cb1-30" title="30"><span class="co">//</span></a>
-<a class="sourceLine" id="cb1-31" title="31"><span class="co">//   fail_on_extrapolate: if true, when an extrapolation occurs throw</span></a>
-<a class="sourceLine" id="cb1-32" title="32"><span class="co">//       an error; if false return NA_REAL</span></a>
-<a class="sourceLine" id="cb1-33" title="33"><span class="co">//</span></a>
-<a class="sourceLine" id="cb1-34" title="34"><span class="co">//   auto_free: automatically clean up the interpolation object on</span></a>
-<a class="sourceLine" id="cb1-35" title="35"><span class="co">//       return to R. This uses `R_alloc` for allocations rather than</span></a>
-<a class="sourceLine" id="cb1-36" title="36"><span class="co">//       `Calloc` so freeing will always happen (even on error</span></a>
-<a class="sourceLine" id="cb1-37" title="37"><span class="co">//       elsewhere in the code). However, this prevents returning back</span></a>
-<a class="sourceLine" id="cb1-38" title="38"><span class="co">//       a pointer to R that will last longer than the call into C</span></a>
-<a class="sourceLine" id="cb1-39" title="39"><span class="co">//       code.</span></a>
-<a class="sourceLine" id="cb1-40" title="40"><span class="co">//</span></a>
-<a class="sourceLine" id="cb1-41" title="41"><span class="co">// The return value is an opaque pointer that can be passed through to</span></a>
-<a class="sourceLine" id="cb1-42" title="42"><span class="co">// `cinterpolate_eval` and `cinterpolate_free`</span></a>
-<a class="sourceLine" id="cb1-43" title="43"><span class="dt">void</span> *cinterpolate_alloc(<span class="dt">const</span> <span class="dt">char</span> *type, <span class="dt">size_t</span> n, <span class="dt">size_t</span> ny,</a>
-<a class="sourceLine" id="cb1-44" title="44">                         <span class="dt">double</span> *x, <span class="dt">double</span> *y, <span class="dt">bool</span> fail_on_extrapolate,</a>
-<a class="sourceLine" id="cb1-45" title="45">                         <span class="dt">bool</span> auto_free);</a>
-<a class="sourceLine" id="cb1-46" title="46"></a>
-<a class="sourceLine" id="cb1-47" title="47"><span class="co">// Evaluate the interpolated function at a new `x` point.</span></a>
-<a class="sourceLine" id="cb1-48" title="48"><span class="co">//</span></a>
-<a class="sourceLine" id="cb1-49" title="49"><span class="co">//   x: A new, single, `x` point to interpolate `y` values to</span></a>
-<a class="sourceLine" id="cb1-50" title="50"><span class="co">//</span></a>
-<a class="sourceLine" id="cb1-51" title="51"><span class="co">//   obj: The interpolation object, as returned by `cinterpolate_alloc`</span></a>
-<a class="sourceLine" id="cb1-52" title="52"><span class="co">//</span></a>
-<a class="sourceLine" id="cb1-53" title="53"><span class="co">//   y: An array of length `ny` to store the interpolated values</span></a>
-<a class="sourceLine" id="cb1-54" title="54"><span class="co">//</span></a>
-<a class="sourceLine" id="cb1-55" title="55"><span class="co">// The return value is 0 if the interpolation is successful (with x</span></a>
-<a class="sourceLine" id="cb1-56" title="56"><span class="co">// lying within the range of values that the interpolation function</span></a>
-<a class="sourceLine" id="cb1-57" title="57"><span class="co">// supports), -1 otherwise</span></a>
-<a class="sourceLine" id="cb1-58" title="58"><span class="dt">int</span> cinterpolate_eval(<span class="dt">double</span> x, <span class="dt">void</span> *obj, <span class="dt">double</span> *y);</a>
-<a class="sourceLine" id="cb1-59" title="59"></a>
-<a class="sourceLine" id="cb1-60" title="60"><span class="co">// Clean up all allocated memory</span></a>
-<a class="sourceLine" id="cb1-61" title="61"><span class="co">//</span></a>
-<a class="sourceLine" id="cb1-62" title="62"><span class="co">//   obj: The interpolation object, as returned by `cinterpolate_alloc`</span></a>
-<a class="sourceLine" id="cb1-63" title="63"><span class="dt">void</span> cinterpolate_free(<span class="dt">void</span> *obj);</a>
-<a class="sourceLine" id="cb1-64" title="64"></a>
-<a class="sourceLine" id="cb1-65" title="65"><span class="pp">#ifdef __cplusplus</span></a>
-<a class="sourceLine" id="cb1-66" title="66">}</a>
-<a class="sourceLine" id="cb1-67" title="67"><span class="pp">#endif</span></a>
-<a class="sourceLine" id="cb1-68" title="68"></a>
-<a class="sourceLine" id="cb1-69" title="69"><span class="pp">#endif</span></a></code></pre></div>
-<p>A complete example of use is included in the package as <code><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file("example", package = "cinterpolate")</a></code>.</p>
+<div class="section level2">
+<h2 id="the-api">The API<a class="anchor" aria-label="anchor" href="#the-api"></a>
+</h2>
+<p>There are only three functions in the <code>cinterpolate</code> API;
+one to build the object (<code>cinterpolate_alloc</code>), one for
+carrying out interpolation (<code>cinterpolate_eval</code>) and one for
+freeing the object after calculations have been run
+(<code>cinterpolate_free</code>). If you allocate a cinterpolate object
+then you are responsible for freeing it (even on error elsewhere in
+code). Not doing this will cause leaks.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifndef CINTERPOLTE_CINTERPOLATE_H_</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#define CINTERPOLTE_CINTERPOLATE_H_</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stddef.h&gt;</span><span class="pp"> </span><span class="co">// size_t</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdbool.h&gt;</span><span class="pp"> </span><span class="co">// bool</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Allow use from C++</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifdef __cplusplus</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">extern</span> <span class="st">"C"</span> <span class="op">{</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">// There are only three functions in the interface; allocation,</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">// evaluation and freeing.</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">// Allocate an interpolation object.</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">//   type: The mode of interpolation. Must be one of "constant",</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">//       "linear" or "spline" (an R error is thrown if a different</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">//       value is given).</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">//   n: The number of `x` points to interpolate over</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">//   ny: the number of `y` points per `x` point.  This is 1 in the</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">//       case of zimple interpolation as used by Rs `interpolate()`</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">//   x: an array of `x` values of length `n`</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">//   y: an array of `ny` sets of `y` values.  This is in R's matrix</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co">//       order (i.e., the first `n` values are the first series to</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">//       interpolate over).</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co">//   fail_on_extrapolate: if true, when an extrapolation occurs throw</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co">//       an error; if false return NA_REAL</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co">//   auto_free: automatically clean up the interpolation object on</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co">//       return to R. This uses `R_alloc` for allocations rather than</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="co">//       `Calloc` so freeing will always happen (even on error</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co">//       elsewhere in the code). However, this prevents returning back</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co">//       a pointer to R that will last longer than the call into C</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co">//       code.</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co">// The return value is an opaque pointer that can be passed through to</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co">// `cinterpolate_eval` and `cinterpolate_free`</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="op">*</span>cinterpolate_alloc<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>type<span class="op">,</span> <span class="dt">size_t</span> n<span class="op">,</span> <span class="dt">size_t</span> ny<span class="op">,</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>                         <span class="dt">double</span> <span class="op">*</span>x<span class="op">,</span> <span class="dt">double</span> <span class="op">*</span>y<span class="op">,</span> <span class="dt">bool</span> fail_on_extrapolate<span class="op">,</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>                         <span class="dt">bool</span> auto_free<span class="op">);</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="co">// Evaluate the interpolated function at a new `x` point.</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="co">//   x: A new, single, `x` point to interpolate `y` values to</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="co">//   obj: The interpolation object, as returned by `cinterpolate_alloc`</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="co">//   y: An array of length `ny` to store the interpolated values</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="co">// The return value is 0 if the interpolation is successful (with x</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="co">// lying within the range of values that the interpolation function</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="co">// supports), -1 otherwise</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> cinterpolate_eval<span class="op">(</span><span class="dt">double</span> x<span class="op">,</span> <span class="dt">void</span> <span class="op">*</span>obj<span class="op">,</span> <span class="dt">double</span> <span class="op">*</span>y<span class="op">);</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="co">// Clean up all allocated memory</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="co">//   obj: The interpolation object, as returned by `cinterpolate_alloc`</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> cinterpolate_free<span class="op">(</span><span class="dt">void</span> <span class="op">*</span>obj<span class="op">);</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifdef __cplusplus</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span></code></pre></div>
+<p>A complete example of use is included in the package as
+<code>system.file("example", package = "cinterpolate")</code>.</p>
 <p>The <code>DESCRIPTION</code> looks like</p>
 <pre class="plain"><code>Package: example
 Title: Testing 'cinterpolate' Package Use
@@ -178,71 +201,85 @@ Authors@R: person("Rich", "FitzJohn", role = c("aut", "cre"),
 LinkingTo: cinterpolate
 Imports: cinterpolate
 Suggests: testthat</code></pre>
-<p>Note the use of <code>LinkingTo:</code> and <code>Imports:</code> here.</p>
-<p>The <code>NAMESPACE</code> file ensures that the package’s shared library is loaded (<code>useDynLib(example)</code>) and that <code>cinterpolate</code>’s functions will be available by importing the package <code>import(cinterpolate)</code> (<code>importFrom(cinterpolate, interpolate_function)</code> would also be fine).</p>
-<pre class="plain"><code>useDynLib(example)
-import(cinterpolate)</code></pre>
+<p>Note the use of <code>LinkingTo:</code> and <code>Imports:</code>
+here.</p>
+<p>The <code>NAMESPACE</code> file ensures that the package’s shared
+library is loaded (<code>useDynLib(example)</code>) and that
+<code>cinterpolate</code>’s functions will be available by importing the
+package <code>import(cinterpolate)</code>
+(<code>importFrom(cinterpolate, interpolate_function)</code> would also
+be fine).</p>
+<pre class="plain"><code><span><span class="fu">useDynLib</span><span class="op">(</span><span class="va">example</span><span class="op">)</span></span>
+<span><span class="fu">import</span><span class="op">(</span><span class="va">cinterpolate</span><span class="op">)</span></span></code></pre>
 <p>The actual usage from C looks like:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb4-1" title="1"><span class="pp">#include </span><span class="im">&lt;cinterpolate/cinterpolate.c&gt;</span></a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="pp">#include </span><span class="im">&lt;stdbool.h&gt;</span></a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="pp">#include </span><span class="im">&lt;R.h&gt;</span></a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="pp">#include </span><span class="im">&lt;Rinternals.h&gt;</span></a>
-<a class="sourceLine" id="cb4-5" title="5"><span class="pp">#include </span><span class="im">&lt;R_ext/Utils.h&gt;</span></a>
-<a class="sourceLine" id="cb4-6" title="6"></a>
-<a class="sourceLine" id="cb4-7" title="7">SEXP test(SEXP r_x, SEXP r_y, SEXP r_xout, SEXP r_type) {</a>
-<a class="sourceLine" id="cb4-8" title="8">  <span class="dt">const</span> <span class="dt">char</span> * type = CHAR(STRING_ELT(r_type, <span class="dv">0</span>));</a>
-<a class="sourceLine" id="cb4-9" title="9"></a>
-<a class="sourceLine" id="cb4-10" title="10">  <span class="dt">bool</span> is_matrix = isMatrix(r_y);</a>
-<a class="sourceLine" id="cb4-11" title="11"></a>
-<a class="sourceLine" id="cb4-12" title="12">  <span class="dt">size_t</span> n = length(r_x);</a>
-<a class="sourceLine" id="cb4-13" title="13">  <span class="dt">size_t</span> ny = is_matrix ? ncols(r_y) : <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb4-14" title="14">  <span class="dt">void</span> *obj = cinterpolate_alloc(type, n, ny, REAL(r_x), REAL(r_y),</a>
-<a class="sourceLine" id="cb4-15" title="15">                                 false, true);</a>
-<a class="sourceLine" id="cb4-16" title="16"></a>
-<a class="sourceLine" id="cb4-17" title="17">  <span class="dt">size_t</span> nxout = length(r_xout);</a>
-<a class="sourceLine" id="cb4-18" title="18">  SEXP r_yout = PROTECT(is_matrix ?</a>
-<a class="sourceLine" id="cb4-19" title="19">                        allocMatrix(REALSXP, ny, nxout) :</a>
-<a class="sourceLine" id="cb4-20" title="20">                        allocVector(REALSXP, nxout));</a>
-<a class="sourceLine" id="cb4-21" title="21">  <span class="dt">double</span> *xout = REAL(r_xout), *yout = REAL(r_yout);</a>
-<a class="sourceLine" id="cb4-22" title="22">  <span class="cf">for</span> (<span class="dt">size_t</span> i = <span class="dv">0</span>; i &lt; nxout; ++i) {</a>
-<a class="sourceLine" id="cb4-23" title="23">    cinterpolate_eval(xout[i], obj, yout);</a>
-<a class="sourceLine" id="cb4-24" title="24">    yout += ny;</a>
-<a class="sourceLine" id="cb4-25" title="25">  }</a>
-<a class="sourceLine" id="cb4-26" title="26"></a>
-<a class="sourceLine" id="cb4-27" title="27">  UNPROTECT(<span class="dv">1</span>);</a>
-<a class="sourceLine" id="cb4-28" title="28">  <span class="cf">return</span> r_yout;</a>
-<a class="sourceLine" id="cb4-29" title="29">}</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;cinterpolate/cinterpolate.c&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdbool.h&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;R.h&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;Rinternals.h&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;R_ext/Utils.h&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>SEXP test<span class="op">(</span>SEXP r_x<span class="op">,</span> SEXP r_y<span class="op">,</span> SEXP r_xout<span class="op">,</span> SEXP r_type<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span> type <span class="op">=</span> CHAR<span class="op">(</span>STRING_ELT<span class="op">(</span>r_type<span class="op">,</span> <span class="dv">0</span><span class="op">));</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bool</span> is_matrix <span class="op">=</span> isMatrix<span class="op">(</span>r_y<span class="op">);</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">size_t</span> n <span class="op">=</span> length<span class="op">(</span>r_x<span class="op">);</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">size_t</span> ny <span class="op">=</span> is_matrix <span class="op">?</span> ncols<span class="op">(</span>r_y<span class="op">)</span> <span class="op">:</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> <span class="op">*</span>obj <span class="op">=</span> cinterpolate_alloc<span class="op">(</span>type<span class="op">,</span> n<span class="op">,</span> ny<span class="op">,</span> REAL<span class="op">(</span>r_x<span class="op">),</span> REAL<span class="op">(</span>r_y<span class="op">),</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                                 false<span class="op">,</span> true<span class="op">);</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">size_t</span> nxout <span class="op">=</span> length<span class="op">(</span>r_xout<span class="op">);</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  SEXP r_yout <span class="op">=</span> PROTECT<span class="op">(</span>is_matrix <span class="op">?</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                        allocMatrix<span class="op">(</span>REALSXP<span class="op">,</span> ny<span class="op">,</span> nxout<span class="op">)</span> <span class="op">:</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                        allocVector<span class="op">(</span>REALSXP<span class="op">,</span> nxout<span class="op">));</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">double</span> <span class="op">*</span>xout <span class="op">=</span> REAL<span class="op">(</span>r_xout<span class="op">),</span> <span class="op">*</span>yout <span class="op">=</span> REAL<span class="op">(</span>r_yout<span class="op">);</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">size_t</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> nxout<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    cinterpolate_eval<span class="op">(</span>xout<span class="op">[</span>i<span class="op">],</span> obj<span class="op">,</span> yout<span class="op">);</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    yout <span class="op">+=</span> ny<span class="op">;</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  UNPROTECT<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> r_yout<span class="op">;</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <ul>
-<li><p>Because this is the only use of cinterpolate in the package, we can directly include <code>cinterpolate/cinterpolate.c</code></p></li>
-<li><p>The <code>interpolate_alloc</code> function is used with <code>auto_clean = true</code> so there is no use of <code>interpolate_free</code> - because this interpolator only needs to survive for this single C function this method of cleanup is probably better</p></li>
-<li><p>There is a single allocation of an interpolation object but several calls to interpolate new values.</p></li>
+<li><p>Because this is the only use of cinterpolate in the package, we
+can directly include <code>cinterpolate/cinterpolate.c</code></p></li>
+<li><p>The <code>interpolate_alloc</code> function is used with
+<code>auto_clean = true</code> so there is no use of
+<code>interpolate_free</code> - because this interpolator only needs to
+survive for this single C function this method of cleanup is probably
+better</p></li>
+<li><p>There is a single allocation of an interpolation object but
+several calls to interpolate new values.</p></li>
 </ul>
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#package-preparation">Package preparation</a></li>
-      <li><a href="#the-api">The API</a></li>
-      </ul>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
 </div>
-      </div>
 
 </div>
+
 
 
       <footer><div class="copyright">
-  <p>Developed by Rich FitzJohn.</p>
+  <p></p>
+<p>Developed by Rich FitzJohn.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
+
       </footer>
 </div>
+
+  
+
 
   
 
