@@ -4,8 +4,7 @@
 \alias{interpolation_function}
 \title{Create an interpolation function}
 \usage{
-interpolation_function(x, y, type, scalar = FALSE,
-  fail_on_extrapolate = FALSE)
+interpolation_function(x, y, type, scalar = FALSE, fail_on_extrapolate = FALSE)
 }
 \arguments{
 \item{x}{Independent variable}
@@ -25,7 +24,7 @@ should cause an failure (rather than an NA value)}
 }
 \value{
 A function that can be used to interpolate the function(s)
-  defined by \code{x} and \code{y} to new values of {x}.
+defined by \code{x} and \code{y} to new values of \code{x}.
 }
 \description{
 Create an interpolation function, using the same implementation as

@@ -1,6 +1,6 @@
 ##' Create an interpolation function, using the same implementation as
 ##' would be available from C code.  This will give very similar
-##' answers to R's \code{\link{splinefun}} function.  This is not the
+##' answers to R's [`splinefun`] function.  This is not the
 ##' primary intended use of the package, which is mostly designed for
 ##' use from C/C++.  This function primarily exists for testing this
 ##' package, and for exploring the interface without writing C code.
@@ -15,7 +15,7 @@
 ##'   ("constant", "linear" or "spline").
 ##'
 ##' @param scalar Return a function that will compute only a single
-##'   \code{x} input at a time.  This is more similar to the C
+##'   `x` input at a time.  This is more similar to the C
 ##'   interface and is equivalent to dropping the first dimension of
 ##'   the output.
 ##'
@@ -23,7 +23,7 @@
 ##'   should cause an failure (rather than an NA value)
 ##'
 ##' @return A function that can be used to interpolate the function(s)
-##'   defined by \code{x} and \code{y} to new values of {x}.
+##'   defined by `x` and `y` to new values of `x`.
 ##'
 ##' @export
 ##' @useDynLib cinterpolate, .registration = TRUE
