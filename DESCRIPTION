@@ -1,6 +1,6 @@
 Package: cinterpolate
 Title: Interpolation From C
-Version: 1.0.1
+Version: 1.0.2
 Description: Simple interpolation methods designed to be used from C
     code. Supports constant, linear and spline interpolation. An R
     wrapper is included but this package is primarily designed to be
