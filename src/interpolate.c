@@ -44,7 +44,7 @@ interpolate_data * interpolate_alloc2(interpolate_type type,
   if (auto_free) {
     ret = (interpolate_data*)R_alloc(1, sizeof(interpolate_data));
   } else {
-    ret = (interpolate_data*)Calloc(1, interpolate_data);
+    ret = (interpolate_data*)R_Calloc(1, interpolate_data);
   }
   ret->type = type;
   ret->n = n;
@@ -54,8 +54,8 @@ interpolate_data * interpolate_alloc2(interpolate_type type,
     ret->x = (double*) R_alloc(n, sizeof(double));
     ret->y = (double*) R_alloc(n * ny, sizeof(double));
   } else {
-    ret->x = (double*) Calloc(n, double);
-    ret->y = (double*) Calloc(n * ny, double);
+    ret->x = (double*) R_Calloc(n, double);
+    ret->y = (double*) R_Calloc(n * ny, double);
   }
   ret->k = NULL;
   memcpy(ret->x, x, sizeof(double) * n);
@@ -76,7 +76,7 @@ interpolate_data * interpolate_alloc2(interpolate_type type,
     if (auto_free) {
       ret->k = (double*) R_alloc(n * ny, sizeof(double));
     } else {
-      ret->k = (double*) Calloc(n * ny, double);
+      ret->k = (double*) R_Calloc(n * ny, double);
     }
     // This is _always_ transient
     double *A = (double*)R_alloc(n * 3, sizeof(double));
@@ -91,10 +91,10 @@ interpolate_data * interpolate_alloc2(interpolate_type type,
 
 void interpolate_free(interpolate_data* obj) {
   if (obj && !obj->auto_free) {
-    Free(obj->x);
-    Free(obj->y);
-    Free(obj->k);
-    Free(obj);
+    R_Free(obj->x);
+    R_Free(obj->y);
+    R_Free(obj->k);
+    R_Free(obj);
   }
 }
 
