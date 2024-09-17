@@ -6,25 +6,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Interpolation From C • cinterpolate</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Interpolation From C">
-<meta property="og:description" content="Simple interpolation methods designed to be used from C
-    code. Supports constant, linear and spline interpolation. An R
-    wrapper is included but this package is primarily designed to be
-    used from C code using LinkingTo.  The spline calculations are
-    classical cubic interpolation, e.g., Forsythe, Malcolm and Moler
-    (1977) &lt;ISBN: 9780131653320&gt;.">
+<meta property="og:description" content="Simple interpolation methods designed to be used from C code. Supports constant, linear and spline interpolation. An R wrapper is included but this package is primarily designed to be used from C code using LinkingTo. The spline calculations are classical cubic interpolation, e.g., Forsythe, Malcolm and Moler (1977) &lt;ISBN: 9780131653320&gt;.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -38,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">cinterpolate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -55,7 +50,7 @@
 <li>
   <a href="https://github.com/mrc-ide/cinterpolate/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -66,7 +61,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="contents col-md-9">
@@ -105,21 +100,21 @@
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;cinterpolate/cinterpolate.h&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;cinterpolate/cinterpolate.h&gt;</span></span></code></pre></div>
 <p>Allocate an object to perform interpolation with. <code>nx</code> and <code>x</code> are the size and values of the function to be interpolated, while <code>ny</code> is the number of functions to be simultaneously (but independently) interpolateed and <code>y</code> is the values for these. If <code>ny &gt; 1</code>, then the values of <code>y</code> are as an R matrix with <code>nx</code> rows and <code>ny</code> columns (the first <code>nx</code> values are the first function, the second <code>nx</code> are the second, and so on). The final two are booleans: <code>fail_on_extrapolate</code> throws an error if extrapolation is requested, and <code>auto_free</code> uses <code>R_alloc()</code> rather than <code>Calloc</code> allowing automatic cleanup.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="op">*</span>obj <span class="op">=</span> cinterpolate_alloc<span class="op">(</span>type<span class="op">,</span> nx<span class="op">,</span> ny<span class="op">,</span> x<span class="op">,</span> y<span class="op">,</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                               fail_on_extrapolate<span class="op">,</span> auto_free<span class="op">);</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="dt">void</span> <span class="op">*</span>obj <span class="op">=</span> cinterpolate_alloc<span class="op">(</span>type<span class="op">,</span> nx<span class="op">,</span> ny<span class="op">,</span> x<span class="op">,</span> y<span class="op">,</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>                               fail_on_extrapolate<span class="op">,</span> auto_free<span class="op">);</span></span></code></pre></div>
 <p>With the interpolation function, an input value of <code>xout</code> and given some storage <code>yout</code> of length <code>ny</code>, determine <code>f(xout)</code> with</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cinterpolate_eval<span class="op">(</span>xout<span class="op">,</span> obj<span class="op">,</span> yout<span class="op">);</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>cinterpolate_eval<span class="op">(</span>xout<span class="op">,</span> obj<span class="op">,</span> yout<span class="op">);</span></span></code></pre></div>
 <p>Once done the object must be freed with</p>
 <pre><code><span><span class="fu">cinterpolate_free</span><span class="op">(</span><span class="va">obj</span><span class="op">)</span>;</span></code></pre>
 <div class="section level3">
 <h3 id="further-package-setup">Further package setup<a class="anchor" aria-label="anchor" href="#further-package-setup"></a>
 </h3>
 <p>Somewhere in the package you must include <code>cinterpolate.c</code> as</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;cinterpolate/cinterpolate.h&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;cinterpolate/cinterpolate.h&gt;</span></span></code></pre></div>
 <p>but this must be included <strong>only once</strong> or linking will fail. If you only use the interpolation in one place, you can use <code>cinterpolate.c</code> rather than <code>cinterpolate.h</code>. If you use interpolation in more than once place, I recommend a file <code>src/cinterpolate.c</code> containing</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;cinterpolate/cinterpolate.c&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;cinterpolate/cinterpolate.c&gt;</span></span></code></pre></div>
 <p>Be sure to include in your <code>DESCRIPTION</code> a line</p>
 <pre><code><span><span class="va">LinkingTo</span><span class="op">:</span> <span class="va">cinterpolate</span></span></code></pre>
 <p><code>cinterpolate</code> takes advantage of BLAS for matrix multiplication, so you may need a Makevars that includes</p>
@@ -196,16 +191,16 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
       </footer>
 </div>
 
-  
 
 
-  
+
+
 
   </body>
 </html>
